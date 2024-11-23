@@ -1,4 +1,4 @@
-# VPC
+# Resource VPC
 
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr
@@ -7,7 +7,7 @@ resource "aws_vpc" "main" {
   }
 }
 
-#SUBNET
+# Resource SUBNET
 
 resource "aws_subnet" "subnet" {
   count                   = 4
@@ -21,7 +21,7 @@ resource "aws_subnet" "subnet" {
   }
 }
 
-# SG
+# Resource SECURITY GROUP
 
 resource "aws_security_group" "web_sg" {
   vpc_id = aws_vpc.main.id
