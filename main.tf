@@ -1,9 +1,13 @@
+# Resource VPC
+
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr
   tags = {
     Name = "Sarfaraz-VPC"
   }
 }
+
+# Resource SUBNET
 
 resource "aws_subnet" "subnet" {
   count                   = 4
@@ -16,6 +20,8 @@ resource "aws_subnet" "subnet" {
     Name = count.index < 2 ? "Public-Subnet-${count.index + 1}" : "Private-Subnet-${count.index - 1}"
   }
 }
+
+# Resource SECURITY GROUP
 
 resource "aws_security_group" "web_sg" {
   vpc_id = aws_vpc.main.id
